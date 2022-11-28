@@ -10,11 +10,18 @@ $(call inherit-product-if-exists, vendor/lenovo-firmware/kunlun2/firmware.mk)
 
 # Inherit from sdm710-common
 $(call inherit-product, device/lenovo/sdm710-common/sdm710.mk)
-
+#PRODUCT_BOARD_PLATFORM := sdm845
+PRODUCT_USES_QCOM_HARDWARE := true
+EXTRA_UDFPS_ANIMATIONS := true
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-PRODUCT_BOARD_PLATFORM := sdm845
-PRODUCT_USES_QCOM_HARDWARE := true
+
+# Permissions
+PRODUCT_COPY_FILES += \
+   frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
+   $(LOCAL_PATH)/configs/google-hiddenapi-package-whitelist-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-hiddenapi-package-whitelist-carriersettings.xml \
+   $(LOCAL_PATH)/permissions/privapp-permissions-google-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-carriersettings.xml
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -41,3 +48,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
     $(LOCAL_PATH)/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
+
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# WiFi
+PRODUCT_PACKAGES += \
+    TargetWifiOverlay
