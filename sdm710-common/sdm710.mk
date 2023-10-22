@@ -1,5 +1,5 @@
 # Additional Flags
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 #ref. Health 
 
 # Inherit from those products. Most specific first
