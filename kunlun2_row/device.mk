@@ -3,7 +3,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
+#aditional
+PRODUCT_PACKAGES += \
+    RemovePackages
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/lenovo/kunlun2_row/kunlun2_row-vendor.mk)
 $(call inherit-product-if-exists, vendor/lenovo-firmware/kunlun2/firmware.mk)
