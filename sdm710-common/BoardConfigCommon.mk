@@ -4,7 +4,7 @@ COMMON_PATH := device/lenovo/sdm710-common
 #Additional Flags
 #include device/qcom/sepolicy_vndr/SEPolicy.mk
 SELINUX_IGNORE_NEVERALLOWS := true
-#SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 #BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 #TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
 #BUILD_BROKEN_PYTHON_IS_PYTHON2 := true
