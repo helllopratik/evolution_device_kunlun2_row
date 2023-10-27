@@ -52,3 +52,9 @@ PRODUCT_SOONG_NAMESPACES += \
 # WiFi
 PRODUCT_PACKAGES += \
     TargetWifiOverlay
+
+# Permissions
+PRODUCT_COPY_FILES += \
+   frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
+   $(LOCAL_PATH)/configs/google-hiddenapi-package-whitelist-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-hiddenapi-package-whitelist-carriersettings.xml \
+   $(LOCAL_PATH)/permissions/privapp-permissions-google-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-carriersettings.xml
