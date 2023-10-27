@@ -1,5 +1,5 @@
 # Blurs
-ro.surface_flinger.supports_background_blur=1
+ro.surface_flinger.supports_background_blur=0
 
 # Camera
 sys.camera.packagename.zui=1
