@@ -178,3 +178,6 @@ vendor/etc/sensors/config/stk3x3x_kunlun2_0.json
 # WiFi
 vendor/firmware/bdwlan_kunlun2.bin
 vendor/bin/cnss-daemon
+
+# FM Radio
+-system/lib64/libfmjni.so

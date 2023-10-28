@@ -86,16 +86,16 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_USERIMAGES_USE_EXT4 := true
 ###########extra commit ##################
 
-SSI_PARTITIONS := product system system_ext
-TREBLE_PARTITIONS := odm vendor
-ALL_PARTITIONS := $(SSI_PARTITIONS) $(TREBLE_PARTITIONS)
-$(foreach p, $(call to-upper, $(ALL_PARTITIONS)), \
-    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4) \
-    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+#SSI_PARTITIONS := product system system_ext
+#TREBLE_PARTITIONS := odm vendor
+#ALL_PARTITIONS := $(SSI_PARTITIONS) $(TREBLE_PARTITIONS)
+#$(foreach p, $(call to-upper, $(ALL_PARTITIONS)), \
+#    $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4) \
+#    $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 # Partitions - dynamic
 BOARD_SUPER_PARTITION_SIZE := 6442450944
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := $(ALL_PARTITIONS)
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
 BOARD_SUPER_PARTITION_BLOCK_DEVICES := system vendor
 BOARD_SUPER_PARTITION_SYSTEM_DEVICE_SIZE := 5368709120
@@ -104,18 +104,17 @@ BOARD_SUPER_PARTITION_VENDOR_DEVICE_SIZE := 1073741824
 BOARD_SUPER_PARTITION_METADATA_DEVICE := system
 
 # Partitions - reserved size
-ifneq ($(WITH_GMS),true)
-$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
-    $(eval BOARD_$(p)IMAGE_EXTFS_INODE_COUNT := -1))
-SSI_PARTITIONS_RESERVED_SIZE := 1205862400
-else
-SSI_PARTITIONS_RESERVED_SIZE := 30720000
-endif
-$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
-    $(eval BOARD_$(p)IMAGE_PARTITION_RESERVED_SIZE := $(SSI_PARTITIONS_RESERVED_SIZE)))
-$(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
-   $(eval BOARD_$(p)IMAGE_PARTITION_RESERVED_SIZE := 30720000))
-
+#ifneq ($(WITH_GMS),true)
+#$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
+#    $(eval BOARD_$(p)IMAGE_EXTFS_INODE_COUNT := -1))
+#SSI_PARTITIONS_RESERVED_SIZE := 1205862400
+#else
+#SSI_PARTITIONS_RESERVED_SIZE := 30720000
+#endif
+#$(foreach p, $(call to-upper, $(SSI_PARTITIONS)), \
+#    $(eval BOARD_$(p)IMAGE_PARTITION_RESERVED_SIZE := $(SSI_PARTITIONS_RESERVED_SIZE)))
+#$(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
+#   $(eval BOARD_$(p)IMAGE_PARTITION_RESERVED_SIZE := 30720000))
 
 # Partitions
 #PRODUCT_USE_DYNAMIC_PARTITIONS := true
