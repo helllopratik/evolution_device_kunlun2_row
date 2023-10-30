@@ -70,6 +70,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl:32 \
     android.hardware.audio.effect@5.0-impl:32 \
     android.hardware.audio.service \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.2-impl:32 \
     audio.r_submix.default \
     audio.usb.default \
@@ -360,8 +361,11 @@ PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # Protobuf
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
+   libprotobuf-cpp-full-3.9.1-vendorcompat
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full.so \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-full.so
 
 # QTI
 PRODUCT_PACKAGES += \
@@ -406,7 +410,8 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0.vendor \
-    libsensorndkbridge
+    libsensorndkbridge \
+    android.frameworks.sensorservice@1.0.vendor
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -452,7 +457,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
+    android.hardware.wifi-service \
     hostapd \
     libwifi-hal-qcom \
     libwpa_client \
