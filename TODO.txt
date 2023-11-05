@@ -1,0 +1,2 @@
+FIX Google play some app unavailable
+FIX for some user unable to boot
